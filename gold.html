@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game</title>
+    <script>
+        var chance = 3;
+        function find( id )
+        {
+            var refAttempt = document.getElementById("attempt");
+            debugger;
+            var select = Math.floor (Math.random() * 10);
+            var myChoice = document.getElementById(id);
+            //myChoice.addEventListener('click',find( id ));
+            var life = document.getElementById("life");
+            
+            if( chance != 0 && refAttempt.innerText != "YOU ARE WINNER!!!." )
+            {
+                if( parseInt( id ) == select )
+                {
+                    //var myChoice = document.getElementById(id);
+                    myChoice.style.backgroundColor = "green";
+                    myChoice.innerText = "GOLD";
+                    refAttempt.innerText = "YOU ARE WINNER!!!.";
+                    alert("YOU HAVE WON!!!!!");
+                }
+                else
+                {
+                    myChoice.style.backgroundColor = "red";
+                    chance = chance - 1;
+                    life.innerText = chance ;
+                    if( chance == 0 )
+                    {
+                        refAttempt.innerText = "YOU LOST!!!";
+                        alert("YOU HAVE LOST!!!!!");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+        function reset()
+        {
+            debugger;
+            var i = 1;
+            chance = 3;
+            var refAttempt = document.getElementById("attempt");
+            var life = document.getElementById("life");
+            life.innerText = 3;
+            refAttempt.innerText = "";
+            for( i = 1 ; i <= 9; i++ )
+            {
+                var myChoice = document.getElementById(i);
+                myChoice.style.backgroundColor = "gold";
+                myChoice.innerText = "";
+            }   
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <br>
+        <h1>FIND THE GOLD</h1>
+        <br>
+    <table border="5" style="width:600px;height:700px;border-collapse:collapse">
+        <tr>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="1" onclick="find( id )"></div></td>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="2" onclick="find( id )"></div></td>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="3" onclick="find( id )"></div></td>
+        </tr>
+        <tr>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="4" onclick="find( id )"></div></td>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="5" onclick="find( id )"></div></td>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="6" onclick="find( id )"></div></td>
+        </tr>
+        <tr>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="7" onclick="find( id )"></div></td>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="8" onclick="find( id )"></div></td>
+            <td><div style="background-color:gold;height:200px;width:200px;border:solid;" id="9" onclick="find( id )"></div></td>
+        </tr>
+        <tr>
+            <td align="center" style="height:100px ;border:solid;">Attempts left</td>
+            <td align="center"><div id="life">3</div></td>
+            <td align="center"><div id="attempt"></div></td>
+        </tr>
+    </table>
+    <br><br>
+    <input type="button" value="RESET" onclick="reset()">
+    </center>
+    <style>
+        input[type=button]
+        {
+        border:1px solid rgba(0,0,0,0.3);
+        background:#64c8ef;
+        background:-moz-linear-gradient(top,#64c8ef 0%,#00a2e2 100%);
+        background:-webkit-gradient(linear,left top,left bottom, color-stop(0%,#64c8ef), color-stop(100%,#00a2e2));
+        background:-webkit-linear-gradient(top, #64c8ef 0%,#00a2e2 100%);
+        background:-o-linear-gradient(top, #64c8ef 0%,#00a2e2 100%);
+        background:-ms-linear-gradient(top, #64c8ef 0%,#00a2e2 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#64c8ef',endColorstr='#00a2e2',gradient Type=0);
+        color:#fff;
+        padding:5px 15px;
+        margin-right:0;
+        margin-top:15px;
+        border-radius:3px;
+        text-shadow:1px 1px 0px rgba(0,0,0,0.3);
+        }
+        body
+        {
+          font-family:Arial,Helvettica,sans-serif; 
+          background-color:#cccccc;
+        }
+    </style>
+</body>
+</html>
